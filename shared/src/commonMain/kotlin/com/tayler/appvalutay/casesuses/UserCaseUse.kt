@@ -4,9 +4,7 @@ import com.tayler.appvalutay.Platform
 import com.tayler.appvalutay.casesuses.network.IUserRepository
 import kotlin.let
 
-/**
- * Simple presenter - use the HelloRepository to "say" hello
- */
+
 class UserCaseUse(
     private val repository: IUserRepository,
     private val platform: Platform
