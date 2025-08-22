@@ -6,20 +6,21 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.getValue
 
 class MainActivity : ComponentActivity() {
+
+
+    private val viewModel : AppViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         setContent {
-            App()
+            App(viewModel)
         }
     }
 }
 
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
-}
