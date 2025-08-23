@@ -1,8 +1,7 @@
 package com.tayler.appvalutay
 
 import android.app.Application
-import com.tayler.appvalutay.casesuses.UserCaseUse
-import com.tayler.appvalutay.casesuses.network.IUserRepository
+import com.tayler.appvalutay.usecases.network.IUserRepository
 import com.tayler.appvalutay.di.appModule
 import com.tayler.appvalutay.di.initKoin
 import com.tayler.appvalutay.di.viewModelModule

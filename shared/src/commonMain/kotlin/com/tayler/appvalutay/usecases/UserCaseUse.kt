@@ -1,7 +1,7 @@
-package com.tayler.appvalutay.casesuses
+package com.tayler.appvalutay.usecases
 
 import com.tayler.appvalutay.Platform
-import com.tayler.appvalutay.casesuses.network.IUserRepository
+import com.tayler.appvalutay.usecases.network.IUserRepository
 import kotlin.let
 
 

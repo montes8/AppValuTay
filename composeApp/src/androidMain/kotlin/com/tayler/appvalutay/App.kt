@@ -19,7 +19,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import appvalutay.composeapp.generated.resources.Res
 import appvalutay.composeapp.generated.resources.compose_multiplatform
-import com.tayler.appvalutay.casesuses.UserCaseUse
+import com.tayler.appvalutay.usecases.UserCaseUse
 import org.koin.compose.koinInject
 
 @SuppressLint("StateFlowValueCalledInComposition")

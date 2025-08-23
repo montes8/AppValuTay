@@ -1,4 +1,4 @@
-package com.tayler.appvalutay.casesuses.network
+package com.tayler.appvalutay.usecases.network
 
 import com.tayler.appvalutay.model.User
 

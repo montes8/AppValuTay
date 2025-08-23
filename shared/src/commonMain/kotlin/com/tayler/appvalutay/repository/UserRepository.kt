@@ -1,6 +1,6 @@
 package com.tayler.appvalutay.repository
 
-import com.tayler.appvalutay.casesuses.network.IUserRepository
+import com.tayler.appvalutay.usecases.network.IUserRepository
 import com.tayler.appvalutay.model.DefaultData
 import com.tayler.appvalutay.model.User
 
