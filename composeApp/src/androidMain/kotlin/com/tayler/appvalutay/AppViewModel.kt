@@ -10,6 +10,6 @@ class AppViewModel(private val repository: UserCaseUse) : ViewModel() {
      val text = MutableStateFlow("")
     fun sayHello(name : String){
         val foundUser = repository.sayHello(name)
-        text.value = foundUser?.let { "Hello '$it'" } ?: "User '$name' not found!"
+        text.value = foundUser.let { "Hello '$it'" }
     }
 }
