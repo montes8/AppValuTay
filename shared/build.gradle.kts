@@ -24,13 +24,26 @@ kotlin {
             isStatic = true
         }
     }
-    
+    val ktorVersion = "3.1.1"
     sourceSets {
         commonMain.dependencies {
             api(libs.koin.core)
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+            implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.1.0")
+            implementation("io.ktor:ktor-client-core:$ktorVersion")
+            implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+            implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        val iosMain by creating {
+            dependencies {
+                implementation("app.cash.sqldelight:native-driver:2.0.2")
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
+            }
         }
     }
 }
