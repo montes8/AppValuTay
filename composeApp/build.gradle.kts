@@ -23,6 +23,7 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation("io.ktor:ktor-client-okhttp:${ktorVersion}")
+            implementation("com.google.code.gson:gson:2.13.1")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -34,6 +35,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
+            implementation("com.google.code.gson:gson:2.13.1")
+
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

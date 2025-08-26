@@ -1,5 +1,6 @@
 package com.tayler.appvalutay.repository.network.api
 
+import com.tayler.appvalutay.model.LocationModel
 import com.tayler.appvalutay.repository.network.KmmService
 import com.tayler.appvalutay.repository.network.data.LocationResponse
 import com.tayler.appvalutay.usecases.network.IDataNetwork
@@ -9,7 +10,7 @@ class DataNetwork : IDataNetwork {
 
     private val apiService: KmmService = KmmService()
 
-    override suspend fun loadLocation() : List<LocationResponse> {
+    override suspend fun loadLocation() : List<LocationModel> {
         return LocationResponse.loadToLocations(apiService.getLocation())
     }
 

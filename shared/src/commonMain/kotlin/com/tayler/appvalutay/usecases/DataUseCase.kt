@@ -1,11 +1,12 @@
 package com.tayler.appvalutay.usecases
 
-import com.tay.taysecurity.repository.network.api.TayDataNetwork
-import com.tay.taysecurity.usecases.repository.network.ITayDataNetwork
+import com.tayler.appvalutay.repository.network.api.DataNetwork
+import com.tayler.appvalutay.usecases.network.IDataNetwork
+
 
 class DataUseCase  {
 
-    private val iDataNetwork : IDataNetwork = TayDataNetwork()
+    private val iDataNetwork : IDataNetwork = DataNetwork()
 
     suspend fun loadLocations() = iDataNetwork.loadLocation()
 
