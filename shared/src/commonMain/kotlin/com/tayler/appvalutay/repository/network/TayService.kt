@@ -1,7 +1,6 @@
 package com.tayler.appvalutay.repository.network
 
 
-import com.tayler.appvalutay.repository.network.data.LocationResponse
 import com.tayler.appvalutay.repository.network.manager.KtorApi
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -14,13 +13,10 @@ class KmmService: KtorApi() {
     }.body()*/
 
 
-    suspend fun getLocation(): String {
+    suspend fun getLocation(): String{
         var response = client.get {
             pathUrlGet("config/location")
-        }.bodyAsText()
-        print("logtexservice "+response)
-        return response
+        }
+        return response.bodyAsText()
     }
-
-
 }

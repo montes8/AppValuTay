@@ -4,6 +4,10 @@ package com.tayler.appvalutay.repository.network.manager
 import io.ktor.client.*
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.DEFAULT
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logger
+import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
@@ -13,7 +17,25 @@ const val BASE_URL = "cockatoo-close-teal.ngrok-free.app/service"
 //https://cockatoo-close-teal.ngrok-free.app/service
 
 abstract class KtorApi {
-    val client = HttpClient()
+    val client =  HttpClient() {
+        install(HttpTimeout) {
+            requestTimeoutMillis = 60_000
+        }
+        install(ContentNegotiation) {
+            json(Json {
+                ignoreUnknownKeys = true
+                prettyPrint = true
+            })
+        }
+        install(Logging) {
+            logger = Logger.DEFAULT
+            level = LogLevel.HEADERS
+            filter { request ->
+                request.url.host.contains(BASE_URL)
+            }
+            sanitizeHeader { header -> header == HttpHeaders.Authorization }
+        }
+    }
     fun HttpRequestBuilder.pathUrlGet(urlSecond: String){
         url {
             protocol = URLProtocol.HTTPS

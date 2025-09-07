@@ -6,17 +6,14 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class LocationResponse(
-    @SerialName("id")
-    var id : String?,
-    @SerialName("latitude")
-    var latitude : String?,
-    @SerialName("longitude")
-    var longitude : String?
+    val uid : String?,
+    val latitude : String?,
+    val longitude : String?
 ){
     companion object{
-        fun loadToLocations(response : List<LocationResponse>) = response.map {
+        fun List<LocationResponse>.loadToLocations() = this.map {
             LocationModel(
-                id = it.id ?: "",
+                id = it.uid ?: "",
                 latitude = it.latitude ?: "0.0",
                 longitude = it.longitude ?: "0.0"
             )
