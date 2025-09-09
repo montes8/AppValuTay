@@ -1,7 +1,6 @@
 package com.tayler.appvalutay.repository.response
 
 import com.tayler.appvalutay.model.LocationModel
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -18,5 +17,20 @@ data class LocationResponse(
                 longitude = it.longitude ?: "0.0"
             )
         }
+    }
+}
+
+@Serializable
+data class LocationRequest(
+    val latitude : String,
+    val longitude : String
+){
+    companion object{
+        fun LocationResponse.toLocations() =
+            LocationModel(
+                id = uid ?: "",
+                latitude = latitude ?: "0.0",
+                longitude = longitude ?: "0.0"
+            )
     }
 }

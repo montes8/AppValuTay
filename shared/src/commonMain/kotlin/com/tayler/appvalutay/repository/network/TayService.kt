@@ -1,8 +1,10 @@
 package com.tayler.appvalutay.repository.network
 
+import com.tayler.appvalutay.repository.response.LocationRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get
+import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
@@ -42,6 +44,13 @@ class KmmService: KoinComponent {
     suspend fun getLocation(): String{
         val response = client.get {
             pathUrlGet("config/location")
+        }
+        return response.bodyAsText()
+    }
+
+    suspend fun postLocation(body : LocationRequest): String{
+        val response = client.post {
+            pathUrlPost("config/location",body)
         }
         return response.bodyAsText()
     }

@@ -5,4 +5,6 @@ import com.tayler.appvalutay.model.LocationModel
 interface IDataNetwork {
     suspend fun loadLocation( ): List<LocationModel>
 
+    suspend fun saveLocation( ): LocationModel
+
 }

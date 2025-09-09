@@ -29,7 +29,7 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
     fun getLocations(){
         viewModelScope.launch(Dispatchers.IO){
             try {
-                val response = dataUseCase.loadLocations()
+                val response = dataUseCase.saveLocations()
                 Log.d("TAGLOCATION",response.toString())
             }catch (ex:Throwable){
                 ex.printStackTrace()

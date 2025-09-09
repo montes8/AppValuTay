@@ -10,4 +10,6 @@ class DataUseCase  {
 
     suspend fun loadLocations() = iDataNetwork.loadLocation()
 
+    suspend fun saveLocations() = iDataNetwork.saveLocation()
+
 }
