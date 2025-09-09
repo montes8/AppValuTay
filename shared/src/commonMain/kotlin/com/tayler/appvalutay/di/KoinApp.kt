@@ -1,19 +1,17 @@
 package com.tayler.appvalutay.di
 
-import com.tayler.appvalutay.repository.network.manager.BASE_URL
+import com.tayler.appvalutay.repository.network.manager.InstantSerializer
+import com.tayler.appvalutay.requestLogger
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.plugins.logging.DEFAULT
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
-import io.ktor.client.plugins.logging.LoggingFormat
-import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
+import kotlinx.datetime.Instant
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.modules.SerializersModule
 import org.koin.core.context.startKoin
-import org.koin.core.logger.Logger
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.includes
 import org.koin.dsl.module
@@ -26,25 +24,26 @@ fun initKoin(config : KoinAppDeclaration? = null){
 }
 private val networkModule = module {
     single {
-        HttpClient {
-            install(HttpTimeout) {
-                requestTimeoutMillis = 60_000
-            }
+       HttpClient {
             install(ContentNegotiation) {
-                json(Json {
-                    ignoreUnknownKeys = true
-                    prettyPrint = true
-                })
+                json(
+                    Json {
+                        ignoreUnknownKeys = true
+                        useAlternativeNames = false
+                        serializersModule = SerializersModule {
+                            contextual(Instant::class, InstantSerializer)
+                        }
+                    },
+                )
             }
             install(Logging) {
-                format = LoggingFormat.OkHttp
-                logger = io.ktor.client.plugins.logging.Logger.DEFAULT
+                logger = requestLogger
                 level = LogLevel.ALL
-                filter { request ->
-                    request.url.host.contains(BASE_URL)
-                }
-                sanitizeHeader { header -> header == HttpHeaders.Authorization }
+            }
 
+            install(HttpTimeout) {
+                socketTimeoutMillis = 60_000
+                requestTimeoutMillis = 60_000
             }
         }
     }
