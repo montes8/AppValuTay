@@ -27,6 +27,7 @@ kotlin {
         }
     }
     val ktorVersion = "3.1.1"
+    val kotlinxDatetime = "0.6.1"
     sourceSets {
         commonMain.dependencies {
             api(libs.koin.core)
@@ -38,7 +39,7 @@ kotlin {
             implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
             implementation("io.ktor:ktor-client-logging:${ktorVersion}")
-
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:${kotlinxDatetime}")
 
         }
         commonTest.dependencies {
