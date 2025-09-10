@@ -1,5 +1,8 @@
 package com.tayler.appvalutay.di
 
+import com.tayler.appvalutay.repository.exeption.ErrorAuthorization
+import com.tayler.appvalutay.repository.exeption.ErrorGeneric
+import com.tayler.appvalutay.repository.exeption.ErrorServer
 import com.tayler.appvalutay.repository.exeption.ExceptionMapper
 import com.tayler.appvalutay.repository.network.manager.InstantSerializer
 import com.tayler.appvalutay.requestLogger
@@ -44,8 +47,19 @@ private val networkModule = module {
            HttpResponseValidator {
                validateResponse { response ->
                    if (response.status != HttpStatusCode.OK) {
+                       val statusCode = response.status.value
                        val error =  response.bodyAsText()
-                       throw ExceptionMapper(response.status.value, error)
+                       when (statusCode) {
+                           in 300..399 -> throw ErrorGeneric()
+                           in 400..499 ->{
+                               if (statusCode == 401){
+                                   throw ErrorAuthorization()
+                               }else{
+                                   throw ExceptionMapper(response.status.value, error)
+                               }
+                           }
+                           in 500..599 ->  throw ErrorServer()
+                       }
                    }
                }
            }

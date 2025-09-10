@@ -7,5 +7,9 @@ data class ExceptionMapper(
     val content : String = "Errro genrrico"
 ): Exception()
 
-@Serializable
-data class ErrorApp(var success: Boolean?)
+
+class ErrorAuthorization: Exception()
+
+class ErrorServer: Exception()
+
+class ErrorGeneric: Exception()
