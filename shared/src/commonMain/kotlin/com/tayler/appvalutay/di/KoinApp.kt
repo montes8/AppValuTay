@@ -51,16 +51,6 @@ private val networkModule = module {
                        throw ExceptionMapper(response.status.value, error)
                    }
                }
-                   /*handleResponseExceptionWithRequest { exception, request ->
-                       val clientException = exception as? ClientRequestException ?: return@handleResponseExceptionWithRequest
-                       val exceptionResponse = clientException.response
-                       print("TayError ex" + exceptionResponse.toString())
-                       print("TayError bbb" + exceptionResponse.bodyAsText())
-                       if (exceptionResponse.status != HttpStatusCode.OK) {
-                           val exceptionResponseText = exceptionResponse.bodyAsText()
-
-                       }
-                   }*/
            }
 
             install(Logging) {
