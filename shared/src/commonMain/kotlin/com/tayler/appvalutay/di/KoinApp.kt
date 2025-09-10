@@ -1,12 +1,9 @@
 package com.tayler.appvalutay.di
 
-import com.tayler.appvalutay.repository.exeption.ErrorApp
 import com.tayler.appvalutay.repository.exeption.ExceptionMapper
 import com.tayler.appvalutay.repository.network.manager.InstantSerializer
 import com.tayler.appvalutay.requestLogger
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
-import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
