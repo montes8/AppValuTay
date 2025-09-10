@@ -1,12 +1,19 @@
 package com.tayler.appvalutay.di
 
+import com.tayler.appvalutay.repository.exeption.ErrorApp
+import com.tayler.appvalutay.repository.exeption.ExceptionMapper
 import com.tayler.appvalutay.repository.network.manager.InstantSerializer
 import com.tayler.appvalutay.requestLogger
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.plugins.ClientRequestException
+import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
 import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.datetime.Instant
 import kotlinx.serialization.json.Json
@@ -36,6 +43,26 @@ private val networkModule = module {
                     },
                 )
             }
+
+           HttpResponseValidator {
+               validateResponse { response ->
+                   if (response.status != HttpStatusCode.OK) {
+                       val error =  response.bodyAsText()
+                       throw ExceptionMapper(response.status.value, error)
+                   }
+               }
+                   /*handleResponseExceptionWithRequest { exception, request ->
+                       val clientException = exception as? ClientRequestException ?: return@handleResponseExceptionWithRequest
+                       val exceptionResponse = clientException.response
+                       print("TayError ex" + exceptionResponse.toString())
+                       print("TayError bbb" + exceptionResponse.bodyAsText())
+                       if (exceptionResponse.status != HttpStatusCode.OK) {
+                           val exceptionResponseText = exceptionResponse.bodyAsText()
+
+                       }
+                   }*/
+           }
+
             install(Logging) {
                 logger = requestLogger
                 level = LogLevel.ALL
