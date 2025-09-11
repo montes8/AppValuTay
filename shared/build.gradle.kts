@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("app.cash.sqldelight") version "2.1.0"
     kotlin("plugin.serialization") version "2.2.0"
 
 }
@@ -28,6 +29,7 @@ kotlin {
     }
     val ktorVersion = "3.1.1"
     val kotlinxDatetime = "0.6.1"
+    val sqlDelightVersion = "2.1.0"
     sourceSets {
         commonMain.dependencies {
             api(libs.koin.core)
@@ -41,6 +43,8 @@ kotlin {
             implementation("io.ktor:ktor-client-logging:${ktorVersion}")
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:${kotlinxDatetime}")
 
+            implementation("com.squareup.sqldelight:runtime:${sqlDelightVersion}")
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -48,7 +52,7 @@ kotlin {
 
         val iosMain by creating {
             dependencies {
-                implementation("app.cash.sqldelight:native-driver:2.0.2")
+                implementation("app.cash.sqldelight:native-driver:${sqlDelightVersion}")
                 implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
         }
@@ -64,5 +68,13 @@ android {
     }
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
+    }
+}
+
+sqldelight {
+    databases {
+        create("AppValuTayDb") {
+            packageName.set("com.tayler.appvalutay.database")
+        }
     }
 }
