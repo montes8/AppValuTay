@@ -14,9 +14,6 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
                    application: Application
 ) : BaseViewModel(application) {
 
-    init {
-        getLocations()
-    }
      val text = MutableStateFlow("")
     fun sayHello(name : String){
         appCaseUse.saveSession("token")

@@ -28,7 +28,7 @@ fun Context.isConnected(): Boolean {
 
 fun Context.validNetWork() = isConnected() && !isAirplaneModeActive()
 
-fun Exception.mapperError(): String{
+fun Throwable.mapperError(): String{
     return when (this) {
         is ExceptionMapper -> {
             this.apiException.errorMessage

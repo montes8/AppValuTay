@@ -7,7 +7,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tayler.appvalutay.repository.exeption.ErrorNetwork
-import com.tayler.appvalutay.utils.mapperError
 import com.tayler.appvalutay.utils.validNetWork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -23,11 +22,10 @@ open class BaseViewModel(private val application: Application): ViewModel() {
                 try {
                     uiStateBase = uiStateBase.copy(loading = loading)
                     delay(1000)
-                    uiStateBase = uiStateBase.copy(loading = false)
                     func()
+                    uiStateBase = uiStateBase.copy(loading = false)
                 }catch (ex:Exception){
                     uiStateBase = uiStateBase.copy(error = true, errorType = ex, loading = false)
-                   var a = ex.mapperError()
                 }
             }
         }else{
