@@ -1,15 +1,14 @@
-package com.tayler.appvalutay
+package com.tayler.appvalutay.application
 
 import android.app.Application
-import com.tayler.appvalutay.usecases.network.IUserRepository
 import com.tayler.appvalutay.di.appModule
 import com.tayler.appvalutay.di.initKoin
 import com.tayler.appvalutay.di.viewModelModule
-import com.tayler.appvalutay.model.DefaultData.DEFAULT_USERS
+import com.tayler.appvalutay.model.DefaultData
+import com.tayler.appvalutay.usecases.network.IUserRepository
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
-import kotlin.getValue
 
 class ValeApplication: Application()  {
 
@@ -20,10 +19,9 @@ class ValeApplication: Application()  {
         initKoin {
             androidContext(this@ValeApplication)
             androidLogger()
-            modules(appModule,viewModelModule)
+            modules( viewModelModule)
         }
-
-        userRepository.addUsers(DEFAULT_USERS)
+        userRepository.addUsers(DefaultData.DEFAULT_USERS)
 
     }
 }

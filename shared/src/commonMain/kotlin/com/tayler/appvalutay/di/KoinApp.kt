@@ -58,7 +58,7 @@ private val networkModule = module {
                                    throw ExceptionMapper(response.status.value, error)
                                }
                            }
-                           in 500..599 ->  throw ErrorServer()
+                           in 500..599 ->  throw ExceptionMapper(response.status.value, error)
                        }
                    }
                }
