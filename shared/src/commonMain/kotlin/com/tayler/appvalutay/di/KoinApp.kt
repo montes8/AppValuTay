@@ -1,11 +1,12 @@
 package com.tayler.appvalutay.di
 
+import com.tayler.appvalutay.repository.exeption.ApiException
 import com.tayler.appvalutay.repository.exeption.ErrorAuthorization
 import com.tayler.appvalutay.repository.exeption.ErrorGeneric
-import com.tayler.appvalutay.repository.exeption.ErrorServer
 import com.tayler.appvalutay.repository.exeption.ExceptionMapper
 import com.tayler.appvalutay.repository.network.manager.InstantSerializer
 import com.tayler.appvalutay.requestLogger
+import com.tayler.appvalutay.utils.parseJsonTo
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.HttpTimeout
@@ -55,10 +56,10 @@ private val networkModule = module {
                                if (statusCode == 401){
                                    throw ErrorAuthorization()
                                }else{
-                                   throw ExceptionMapper(response.status.value, error)
+                                   throw ExceptionMapper(response.status.value, error.parseJsonTo<ApiException>())
                                }
                            }
-                           in 500..599 ->  throw ExceptionMapper(response.status.value, error)
+                           in 500..599 ->  throw ExceptionMapper(response.status.value, error.parseJsonTo<ApiException>())
                        }
                    }
                }

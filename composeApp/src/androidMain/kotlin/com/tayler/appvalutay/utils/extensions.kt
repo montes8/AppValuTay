@@ -4,6 +4,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.provider.Settings
+import com.tayler.appvalutay.repository.exeption.ErrorAuthorization
+import com.tayler.appvalutay.repository.exeption.ErrorNetwork
+import com.tayler.appvalutay.repository.exeption.ExceptionMapper
 
 
 fun Context.isAirplaneModeActive(): Boolean {
@@ -21,4 +24,24 @@ fun Context.isConnected(): Boolean {
                 capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
     }
     return false
+}
+
+fun Context.validNetWork() = isConnected() && !isAirplaneModeActive()
+
+fun Exception.mapperError(): String{
+    return when (this) {
+        is ExceptionMapper -> {
+            this.apiException.errorMessage
+        }
+
+        is ErrorAuthorization -> {
+            "Error de autenticacion"
+        }
+
+        is ErrorNetwork -> {
+            "Error de conexion de internet"
+        }
+
+        else -> "Error  Generic"
+    }
 }

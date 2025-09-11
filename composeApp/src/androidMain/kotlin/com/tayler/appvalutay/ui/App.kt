@@ -1,4 +1,4 @@
-package com.tayler.appvalutay
+package com.tayler.appvalutay.ui
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
@@ -25,7 +25,7 @@ import org.koin.compose.koinInject
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 @Preview
-fun App(viewModel : AppViewModel ) {
+fun App(viewModel : AppViewModel) {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
         viewModel.sayHello("Tayler prueba")
