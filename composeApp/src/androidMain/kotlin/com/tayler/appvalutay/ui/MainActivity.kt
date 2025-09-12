@@ -14,7 +14,7 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setDataGlobal() {
-        viewModel.getLocations()
+        viewModel.saveUser()
     }
 
     override fun getViewModel(): BaseViewModel = viewModel

@@ -25,7 +25,15 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
     fun getLocations(){
         execute {
             val response = dataUseCase.loadLocations()
-            Log.d("TAGLOCATION",response.toString())
+            Log.d("TAGAPPValu",response.toString())
+        }
+    }
+
+    fun saveUser(){
+        execute {
+            val response = userCaseUse.saveUser()
+            val user = userCaseUse.getUser()
+            Log.d("TAGAPPValu",user.toString())
         }
     }
 }

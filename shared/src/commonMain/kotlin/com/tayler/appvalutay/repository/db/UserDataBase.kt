@@ -1,13 +1,17 @@
 package com.tayler.appvalutay.repository.db
 
-import com.tayler.appvalutay.manager.db.databaseDriverFactory
+import com.tayler.appvalutay.database.AppValuTayDb
+import com.tayler.appvalutay.manager.db.DatabaseDriverFactory
 import com.tayler.appvalutay.model.UserModel
 import com.tayler.appvalutay.usecases.db.IUserDataBase
 import database.UserEntity
 import database.UserTableQueries
 
-class UserDataBase(private val queries: UserTableQueries = databaseDriverFactory().userTableQueries):
+class UserDataBase(databaseDriverFactory: DatabaseDriverFactory):
     IUserDataBase {
+
+    private val queries = AppValuTayDb(databaseDriverFactory.createDriver()).userTableQueries
+
 
     override suspend fun insertUser(user: UserModel) :Boolean{
         queries.insertUser(user.name, user.pass,user.token)
@@ -17,6 +21,13 @@ class UserDataBase(private val queries: UserTableQueries = databaseDriverFactory
     override suspend fun getUserById(id: Long): UserModel? {
         return queries
             .getUserById(id)
+            .executeAsOneOrNull()
+            ?.toUser()
+    }
+
+    override suspend fun getUser(): UserModel? {
+        return queries
+            .selectAllUser()
             .executeAsOneOrNull()
             ?.toUser()
     }
