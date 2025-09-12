@@ -9,6 +9,11 @@ plugins {
 
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -42,8 +47,7 @@ kotlin {
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
             implementation("io.ktor:ktor-client-logging:${ktorVersion}")
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:${kotlinxDatetime}")
-
-            implementation("com.squareup.sqldelight:runtime:${sqlDelightVersion}")
+            implementation("app.cash.sqldelight:android-driver:2.1.0")
 
         }
         commonTest.dependencies {

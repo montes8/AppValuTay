@@ -4,9 +4,9 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.provider.Settings
-import com.tayler.appvalutay.repository.exeption.ErrorAuthorization
-import com.tayler.appvalutay.repository.exeption.ErrorNetwork
-import com.tayler.appvalutay.repository.exeption.ExceptionMapper
+import com.tayler.appvalutay.repository.network.exeption.ErrorAuthorization
+import com.tayler.appvalutay.repository.network.exeption.ErrorNetwork
+import com.tayler.appvalutay.repository.network.exeption.ExceptionMapper
 
 
 fun Context.isAirplaneModeActive(): Boolean {

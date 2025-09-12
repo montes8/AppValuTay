@@ -4,6 +4,7 @@ import android.app.Application
 import com.tayler.appvalutay.di.appModule
 import com.tayler.appvalutay.di.initKoin
 import com.tayler.appvalutay.di.viewModelModule
+import com.tayler.appvalutay.manager.db.appContext
 import com.tayler.appvalutay.model.DefaultData
 import com.tayler.appvalutay.usecases.network.IUserRepository
 import org.koin.android.ext.android.inject
@@ -16,6 +17,7 @@ class ValeApplication: Application()  {
 
     override fun onCreate() {
         super.onCreate()
+        appContext = this
         initKoin {
             androidContext(this@ValeApplication)
             androidLogger()

@@ -3,7 +3,7 @@ package com.tayler.appvalutay.di
 import com.tayler.appvalutay.usecases.UserCaseUse
 import com.tayler.appvalutay.usecases.network.IUserRepository
 import com.tayler.appvalutay.getPlatform
-import com.tayler.appvalutay.repository.AppPreferences
+import com.tayler.appvalutay.repository.preferences.AppPreferences
 import com.tayler.appvalutay.repository.UserRepository
 import com.tayler.appvalutay.repository.network.api.DataNetwork
 import com.tayler.appvalutay.usecases.AppCaseUse

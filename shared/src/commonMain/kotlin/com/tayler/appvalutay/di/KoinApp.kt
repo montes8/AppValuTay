@@ -1,9 +1,9 @@
 package com.tayler.appvalutay.di
 
-import com.tayler.appvalutay.repository.exeption.ApiException
-import com.tayler.appvalutay.repository.exeption.ErrorAuthorization
-import com.tayler.appvalutay.repository.exeption.ErrorGeneric
-import com.tayler.appvalutay.repository.exeption.ExceptionMapper
+import com.tayler.appvalutay.repository.network.exeption.ApiException
+import com.tayler.appvalutay.repository.network.exeption.ErrorAuthorization
+import com.tayler.appvalutay.repository.network.exeption.ErrorGeneric
+import com.tayler.appvalutay.repository.network.exeption.ExceptionMapper
 import com.tayler.appvalutay.repository.network.manager.InstantSerializer
 import com.tayler.appvalutay.requestLogger
 import com.tayler.appvalutay.utils.parseJsonTo

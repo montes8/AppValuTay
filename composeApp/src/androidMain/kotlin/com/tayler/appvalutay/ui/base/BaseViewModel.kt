@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tayler.appvalutay.repository.exeption.ErrorNetwork
+import com.tayler.appvalutay.repository.network.exeption.ErrorNetwork
 import com.tayler.appvalutay.utils.validNetWork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
