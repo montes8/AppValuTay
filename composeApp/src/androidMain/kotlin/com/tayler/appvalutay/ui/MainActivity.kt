@@ -1,5 +1,6 @@
 package com.tayler.appvalutay.ui
 
+import android.os.Handler
 import androidx.compose.runtime.Composable
 import com.tayler.appvalutay.ui.base.BaseActivity
 import com.tayler.appvalutay.ui.base.BaseViewModel
@@ -11,10 +12,11 @@ class MainActivity : BaseActivity() {
     @Composable
     override fun SetScreenConfig() {
         App(viewModel)
+
     }
 
     override fun setDataGlobal() {
-        viewModel.saveUser()
+       // viewModel.saveUser()
         viewModel.getLocations()
     }
 

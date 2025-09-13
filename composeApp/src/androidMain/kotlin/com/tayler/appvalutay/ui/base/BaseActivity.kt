@@ -13,7 +13,7 @@ abstract class BaseActivity : ComponentActivity() {
 
     @Composable
     abstract fun SetScreenConfig()
-    abstract fun setDataGlobal()
+    abstract  fun setDataGlobal()
     open fun getViewModel(): BaseViewModel? = null
 
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
