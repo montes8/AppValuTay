@@ -2,6 +2,7 @@ package com.tayler.appvalutay.manager
 
 
 
+@Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 expect class ValePreferenceManager
 
 expect fun ValePreferenceManager.getInt(key: String) : Int
