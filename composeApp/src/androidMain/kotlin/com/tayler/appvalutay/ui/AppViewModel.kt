@@ -1,7 +1,6 @@
 package com.tayler.appvalutay.ui
 
 import android.app.Application
-import android.util.Log
 import com.tayler.appvalutay.ui.base.BaseViewModel
 import com.tayler.appvalutay.usecases.AppCaseUse
 import com.tayler.appvalutay.usecases.DataUseCase
@@ -24,15 +23,13 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
     fun getLocations(){
         execute {
             val response = dataUseCase.loadLocations()
-            Log.d("TAGAPPValu",response.toString())
         }
     }
 
     fun saveUser(){
         execute {
             val response = userCaseUse.saveUser()
-            val user = userCaseUse.getUser()
-            Log.d("TAGAPPValu",user.toString())
+
         }
     }
 }

@@ -5,7 +5,6 @@ import com.tayler.appvalutay.manager.db.DatabaseDriverFactory
 import com.tayler.appvalutay.model.UserModel
 import com.tayler.appvalutay.usecases.db.IUserDataBase
 import database.UserEntity
-import database.UserTableQueries
 
 class UserDataBase(databaseDriverFactory: DatabaseDriverFactory):
     IUserDataBase {
