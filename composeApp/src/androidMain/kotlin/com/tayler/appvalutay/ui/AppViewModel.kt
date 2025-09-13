@@ -22,14 +22,13 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
 
     fun getLocations(){
         execute {
-            val response = dataUseCase.loadLocations()
+            dataUseCase.loadLocations()
         }
     }
 
     fun saveUser(){
-        execute {
-            val response = userCaseUse.saveUser()
-
+        executeAlter {
+             userCaseUse.saveUser()
         }
     }
 }
