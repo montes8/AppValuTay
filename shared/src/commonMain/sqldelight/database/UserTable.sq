@@ -9,6 +9,10 @@ selectAllUser:
 SELECT *
 FROM userEntity;
 
+selectUser:
+SELECT *
+FROM userEntity
+LIMIT 1;
 
 getUserById:
 SELECT *

@@ -27,7 +27,7 @@ class UserDataBase(databaseDriverFactory: DatabaseDriverFactory):
 
     override suspend fun getUser(): UserModel? {
         return queries
-            .selectAllUser()
+            .selectUser()
             .executeAsOneOrNull()
             ?.toUser()
     }
