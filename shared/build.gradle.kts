@@ -32,7 +32,6 @@ kotlin {
         commonMain.dependencies {
             api(libs.koin.core)
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-           // implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
             implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.1.0")
             implementation("io.ktor:ktor-client-core:$ktorVersion")
             implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
