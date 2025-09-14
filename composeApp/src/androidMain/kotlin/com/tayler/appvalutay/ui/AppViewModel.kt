@@ -28,4 +28,10 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
             Log.d("TAGLOCATION",response.toString())
         }
     }
+
+    fun saveUser(){
+        executeAlter {
+            userCaseUse.saveUser()
+        }
+    }
 }
