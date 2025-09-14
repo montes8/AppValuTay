@@ -13,7 +13,7 @@ class UserRepository : IUserRepository {
     }
 
     override fun findUser(name: String): UserModel? {
-        return UserModel("valu Montesinos")
+        return UserModel()
     }
 
     override fun addUsers(users : List<UserModel>) {

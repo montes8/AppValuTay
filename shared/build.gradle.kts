@@ -38,6 +38,11 @@ kotlin {
     val kotlinxDatetime = "0.6.1"
     val sqlDelightVersion = "2.1.0"
     sourceSets {
+         androidMain.dependencies {
+                implementation("app.cash.sqldelight:android-driver:2.1.0")
+                implementation("io.ktor:ktor-client-okhttp:${ktorVersion}")
+            }
+
         commonMain.dependencies {
             api(libs.koin.core)
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
@@ -55,13 +60,11 @@ kotlin {
             implementation(libs.kotlin.test)
         }
 
-        val iosMain by creating {
-            dependencies {
+         iosMain.dependencies {
                 implementation("app.cash.sqldelight:native-driver:${sqlDelightVersion}")
-                implementation("app.cash.sqldelight:native-driver:2.1.0")
+                implementation("io.ktor:ktor-client-darwin:${ktorVersion}")
 
             }
-        }
     }
 }
 

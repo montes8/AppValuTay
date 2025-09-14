@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -7,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    id("app.cash.sqldelight") version "2.1.0"
 }
 
 repositories {
@@ -21,13 +21,10 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    val ktorVersion = "3.1.1"
-
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation("io.ktor:ktor-client-okhttp:${ktorVersion}")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -39,10 +36,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
-            implementation("app.cash.sqldelight:android-driver:2.1.0")
-
-
-
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
