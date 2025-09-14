@@ -30,10 +30,4 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
              userCaseUse.saveUser()
         }
     }
-
-    fun saveUser(){
-        executeAlter {
-            userCaseUse.saveUser()
-        }
-    }
 }

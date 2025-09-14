@@ -16,7 +16,6 @@ repositories {
 
 
 kotlin {
-    @Suppress("OPT_IN_USAGE")
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
