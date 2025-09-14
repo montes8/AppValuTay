@@ -23,9 +23,10 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation("io.ktor:ktor-client-okhttp:${ktorVersion}")
-            implementation("com.google.code.gson:gson:2.13.1")
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
         }
         commonMain.dependencies {
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
@@ -35,7 +36,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
-            implementation("com.google.code.gson:gson:2.13.1")
 
 
         }
