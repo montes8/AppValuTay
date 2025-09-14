@@ -23,10 +23,8 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
             implementation("io.ktor:ktor-client-okhttp:${ktorVersion}")
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.0")
         }
         commonMain.dependencies {
-            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
