@@ -1,6 +1,6 @@
 package com.tayler.appvalutay.repository.network
 
-import com.tayler.appvalutay.repository.response.LocationRequest
+import com.tayler.appvalutay.repository.network.response.LocationRequest
 import io.ktor.client.HttpClient
 import io.ktor.client.request.HttpRequestBuilder
 import io.ktor.client.request.get

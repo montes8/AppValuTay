@@ -1,6 +1,6 @@
 package com.tayler.appvalutay.utils
 
-import com.tayler.appvalutay.repository.response.LocationResponse
+import com.tayler.appvalutay.repository.network.response.LocationResponse
 import kotlinx.serialization.json.Json.Default.decodeFromString
 
 internal inline fun <reified R : Any> String.parseJsonTo() =

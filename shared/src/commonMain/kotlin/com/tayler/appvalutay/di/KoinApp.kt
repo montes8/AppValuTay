@@ -1,9 +1,11 @@
 package com.tayler.appvalutay.di
 
-import com.tayler.appvalutay.repository.exeption.ApiException
-import com.tayler.appvalutay.repository.exeption.ErrorAuthorization
-import com.tayler.appvalutay.repository.exeption.ErrorGeneric
-import com.tayler.appvalutay.repository.exeption.ExceptionMapper
+import com.tayler.appvalutay.manager.db.DatabaseDriverFactory
+import com.tayler.appvalutay.repository.db.UserDataBase
+import com.tayler.appvalutay.repository.network.exeption.ApiException
+import com.tayler.appvalutay.repository.network.exeption.ErrorAuthorization
+import com.tayler.appvalutay.repository.network.exeption.ErrorGeneric
+import com.tayler.appvalutay.repository.network.exeption.ExceptionMapper
 import com.tayler.appvalutay.repository.network.manager.InstantSerializer
 import com.tayler.appvalutay.requestLogger
 import com.tayler.appvalutay.utils.parseJsonTo
@@ -27,7 +29,17 @@ import org.koin.dsl.module
 fun initKoin(config : KoinAppDeclaration? = null){
     startKoin {
         includes(config)
-        modules(appModule,networkModule)
+        modules(appModule,networkModule,dbModule)
+    }
+}
+
+
+private val dbModule = module {
+    single {
+        UserDataBase(databaseDriverFactory = get())
+    }
+    single {
+        DatabaseDriverFactory()
     }
 }
 private val networkModule = module {

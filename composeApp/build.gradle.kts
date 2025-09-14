@@ -1,4 +1,3 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -9,6 +8,11 @@ plugins {
     alias(libs.plugins.composeCompiler)
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
@@ -17,12 +21,12 @@ kotlin {
         }
     }
     val ktorVersion = "3.1.1"
+    val sqlDelightVersion = "2.1.0"
 
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            implementation("io.ktor:ktor-client-okhttp:${ktorVersion}")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -68,6 +72,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
 }
 
 dependencies {

@@ -1,4 +1,4 @@
-package com.tayler.appvalutay.repository.response
+package com.tayler.appvalutay.repository.network.response
 
 import com.tayler.appvalutay.model.LocationModel
 import kotlinx.serialization.Serializable

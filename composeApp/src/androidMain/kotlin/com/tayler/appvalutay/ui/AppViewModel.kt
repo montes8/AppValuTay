@@ -1,7 +1,6 @@
 package com.tayler.appvalutay.ui
 
 import android.app.Application
-import android.util.Log
 import com.tayler.appvalutay.ui.base.BaseViewModel
 import com.tayler.appvalutay.usecases.AppCaseUse
 import com.tayler.appvalutay.usecases.DataUseCase
@@ -13,19 +12,22 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
                    private val dataUseCase: DataUseCase,
                    application: Application
 ) : BaseViewModel(application) {
-
      val text = MutableStateFlow("")
     fun sayHello(name : String){
         appCaseUse.saveSession("token")
         val foundUser = userCaseUse.sayHello(name)
-        Log.d("tahprefe","${appCaseUse.getSession()}")
         text.value = foundUser.let { "Hello '$it'" }
     }
 
     fun getLocations(){
         execute {
-            val response = dataUseCase.loadLocations()
-            Log.d("TAGLOCATION",response.toString())
+            dataUseCase.loadLocations()
+        }
+    }
+
+    fun saveUser(){
+        executeAlter {
+             userCaseUse.saveUser()
         }
     }
 }
