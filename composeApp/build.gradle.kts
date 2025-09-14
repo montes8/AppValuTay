@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    id("app.cash.sqldelight") version "2.1.0"
 }
 
 repositories {
@@ -20,9 +21,6 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    val ktorVersion = "3.1.1"
-    val sqlDelightVersion = "2.1.0"
-
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
@@ -38,8 +36,6 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
-
-
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -72,7 +68,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
 }
 
 dependencies {

@@ -1,7 +1,6 @@
 package com.tayler.appvalutay.application
 
 import android.app.Application
-import com.tayler.appvalutay.di.appModule
 import com.tayler.appvalutay.di.initKoin
 import com.tayler.appvalutay.di.viewModelModule
 import com.tayler.appvalutay.manager.db.appContext

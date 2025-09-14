@@ -6,6 +6,7 @@ import com.tayler.appvalutay.model.UserModel
 import com.tayler.appvalutay.usecases.db.IUserDataBase
 import database.UserEntity
 
+
 class UserDataBase(databaseDriverFactory: DatabaseDriverFactory):
     IUserDataBase {
 
