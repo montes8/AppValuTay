@@ -1,4 +1,4 @@
-package com.tayler.appvalutay.repository
+package com.tayler.appvalutay.repository.db
 
 import com.tayler.appvalutay.manager.ValePreferenceManager
 import com.tayler.appvalutay.manager.getString

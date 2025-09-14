@@ -1,4 +1,4 @@
-package com.tayler.appvalutay.repository.exeption
+package com.tayler.appvalutay.repository.network.exeption
 
 import kotlinx.serialization.Serializable
 
