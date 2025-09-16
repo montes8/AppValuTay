@@ -63,7 +63,9 @@ kotlin {
                 implementation("app.cash.sqldelight:native-driver:${sqlDelightVersion}")
                 implementation("io.ktor:ktor-client-darwin:${ktorVersion}")
 
-            }
+         }
+
+
     }
 }
 

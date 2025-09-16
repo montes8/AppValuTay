@@ -11,16 +11,17 @@ import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
-
 import appvalutay.composeapp.generated.resources.Res
 import appvalutay.composeapp.generated.resources.compose_multiplatform
-import com.tayler.appvalutay.usecases.UserCaseUse
-import org.koin.compose.koinInject
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
@@ -28,7 +29,6 @@ import org.koin.compose.koinInject
 fun App(viewModel : AppViewModel) {
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
-        viewModel.sayHello("Tayler prueba")
         Column(
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.primaryContainer)
@@ -40,14 +40,11 @@ fun App(viewModel : AppViewModel) {
                 Text("Click me!")
             }
             AnimatedVisibility(showContent) {
-                val greeting = koinInject<UserCaseUse>().sayHello("Koin")
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                    Text("Compose: ${viewModel.text.value}")
                 }
             }
         }

@@ -1,10 +1,8 @@
 package com.tayler.appvalutay.di
 
 import com.tayler.appvalutay.usecases.UserCaseUse
-import com.tayler.appvalutay.usecases.network.IUserRepository
 import com.tayler.appvalutay.getPlatform
 import com.tayler.appvalutay.repository.preferences.AppPreferences
-import com.tayler.appvalutay.repository.UserRepository
 import com.tayler.appvalutay.repository.db.UserDataBase
 import com.tayler.appvalutay.repository.network.api.DataNetwork
 import com.tayler.appvalutay.usecases.AppCaseUse
@@ -18,7 +16,6 @@ import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
 val appModule = module {
-    singleOf(::UserRepository) { bind<IUserRepository>() }
     singleOf(::AppPreferences) { bind<IAppPreferences>() }
     singleOf(::DataNetwork) { bind<IDataNetwork>() }
     singleOf(::UserDataBase) { bind<IUserDataBase>() }
