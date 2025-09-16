@@ -8,11 +8,6 @@ plugins {
     alias(libs.plugins.composeCompiler)
 }
 
-repositories {
-    google()
-    mavenCentral()
-}
-
 kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
