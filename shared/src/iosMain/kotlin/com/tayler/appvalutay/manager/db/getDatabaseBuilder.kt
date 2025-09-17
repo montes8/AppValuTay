@@ -3,6 +3,8 @@ package com.tayler.appvalutay.manager.db
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.cinterop.ExperimentalForeignApi
+import org.koin.core.module.Module
+import org.koin.dsl.module
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDomainMask
@@ -25,4 +27,11 @@ private fun documentDirectory(): String {
     )
 
     return requireNotNull(documentDirectory?.path)
+}
+
+actual fun platformModule(): Module = module {
+    single<AppDatabase> {
+        val builder = getDatabaseBuilder()
+        getAppDatabase(builder)
+    }
 }

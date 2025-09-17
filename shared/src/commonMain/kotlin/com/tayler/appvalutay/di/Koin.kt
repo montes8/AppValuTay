@@ -1,5 +1,6 @@
 package com.tayler.appvalutay.di
 
+import com.tayler.appvalutay.manager.db.platformModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
 
@@ -7,6 +8,6 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     startKoin {
         appDeclaration()
         modules(
-            appModule,networkModule
+            appModule,networkModule,dbModule(), platformModule()
         )
     }

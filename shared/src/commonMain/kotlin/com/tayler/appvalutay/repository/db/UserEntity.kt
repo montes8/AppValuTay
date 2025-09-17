@@ -2,6 +2,7 @@ package com.tayler.appvalutay.repository.db
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.tayler.appvalutay.model.UserModel
 
 @Entity
 data class UserEntity(
@@ -10,4 +11,6 @@ data class UserEntity(
     val name: String,
     val pass : String,
     val token : String
-)
+){
+    fun toUser()=  UserModel(id,name,pass,token)
+}

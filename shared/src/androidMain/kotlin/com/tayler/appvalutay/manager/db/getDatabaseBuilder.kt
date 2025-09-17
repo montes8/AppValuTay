@@ -1,9 +1,10 @@
-package com.tayler.appvalutay.di
+package com.tayler.appvalutay.manager.db
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.tayler.appvalutay.manager.db.AppDatabase
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
 fun getDatabaseBuilder(context: Context): RoomDatabase.Builder<AppDatabase> {
     val appContext = context.applicationContext
@@ -13,4 +14,11 @@ fun getDatabaseBuilder(context: Context): RoomDatabase.Builder<AppDatabase> {
         context = appContext,
         name = dbFile.absolutePath,
     )
+}
+
+actual fun platformModule(): Module = module {
+    single<AppDatabase> {
+        val builder = getDatabaseBuilder(context = get())
+        getAppDatabase(builder)
+    }
 }
