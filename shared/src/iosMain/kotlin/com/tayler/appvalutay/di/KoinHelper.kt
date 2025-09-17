@@ -10,8 +10,7 @@ class KoinHelper : KoinComponent {
     fun getSession() : Boolean = appCaseUse.getSession()
 }
 
-fun initKoin(){
-    startKoin {
-        modules(appModule,networkModule)
-    }
-}
+fun initKoinIos() = initKoin(appDeclaration = {
+    modules(appModule,networkModule)
+
+})

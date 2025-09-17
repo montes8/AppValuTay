@@ -5,8 +5,7 @@ import com.tayler.appvalutay.ui.base.BaseViewModel
 import com.tayler.appvalutay.usecases.DataUseCase
 import com.tayler.appvalutay.usecases.UserCaseUse
 
-class AppViewModel(private val userCaseUse: UserCaseUse,
-                   private val dataUseCase: DataUseCase,
+class AppViewModel(private val dataUseCase: DataUseCase,
                    application: Application
 ) : BaseViewModel(application) {
 
@@ -16,9 +15,4 @@ class AppViewModel(private val userCaseUse: UserCaseUse,
         }
     }
 
-    fun saveUser(){
-        executeAlter {
-             userCaseUse.saveUser()
-        }
-    }
 }
