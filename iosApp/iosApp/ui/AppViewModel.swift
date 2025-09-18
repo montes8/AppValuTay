@@ -8,6 +8,7 @@
 import Foundation
 import Shared
 
+@MainActor
 class  SplashViewModel :ObservableObject{
 
   
@@ -16,9 +17,17 @@ class  SplashViewModel :ObservableObject{
     @Published var successToken : Bool = false
    
     
-    func getToken(){
-        var response = usesCases.getSession()
-        print(String(response))
+    func getToken() async{
+        do {
+            var currentUser = try await usesCases.saveUser()
+           var response = try await usesCases.getUser()
+           
+                       print("tagDataTay")
+                       print(response)
+                } catch {
+                    print("tagDataTayErrorrrrrr")
+                }
+        
       }
     
 }

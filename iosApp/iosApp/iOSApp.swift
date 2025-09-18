@@ -6,9 +6,10 @@ import Shared
 @main
 struct iOSApp: App {
 
+    
     init() {
-        // Initialize Koin in the iOS app
-      //  KoinHelperKt.doInitKoin()
+        KoinHelperKt.doInitKoinIos()
+       
     }
 
 

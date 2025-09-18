@@ -2,6 +2,9 @@ import SwiftUI
 import Shared
 
 struct ContentView: View {
+    
+    @StateObject private var viewModel = SplashViewModel()
+    
     @State private var showContent = false
     var body: some View {
         VStack {
@@ -22,7 +25,9 @@ struct ContentView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .padding()
+        .padding().task {
+            await viewModel.getToken()
+        }
     }
 }
 

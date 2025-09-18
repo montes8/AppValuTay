@@ -16,7 +16,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_17)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -24,6 +24,7 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "Shared"
+           // linkerOpts.add("-lsqlite3")
             isStatic = true
         }
     }
