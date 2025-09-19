@@ -5,7 +5,9 @@ import com.tayler.appvalutay.getPlatform
 import com.tayler.appvalutay.repository.db.UserDataBase
 import com.tayler.appvalutay.repository.preferences.AppPreferences
 import com.tayler.appvalutay.repository.network.api.DataNetwork
+import com.tayler.appvalutay.repository.preferences.DataStorePreference
 import com.tayler.appvalutay.usecases.AppCaseUse
+import com.tayler.appvalutay.usecases.DataStoreCaseUse
 import com.tayler.appvalutay.usecases.DataUseCase
 import com.tayler.appvalutay.usecases.db.IUserDataBase
 import com.tayler.appvalutay.usecases.network.IDataNetwork

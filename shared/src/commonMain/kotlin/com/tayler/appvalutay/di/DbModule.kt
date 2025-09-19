@@ -7,4 +7,5 @@ import org.koin.dsl.module
 
 fun dbModule(): Module = module {
     single<UserDao> { get<AppDatabase>().getUserDao() }
+
 }

@@ -49,6 +49,8 @@ kotlin {
             implementation("org.jetbrains.kotlinx:kotlinx-datetime:${kotlinxDatetime}")
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
+            implementation("androidx.datastore:datastore-preferences:1.1.7")
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
