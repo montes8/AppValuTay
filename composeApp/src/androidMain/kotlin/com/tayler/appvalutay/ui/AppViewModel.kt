@@ -3,12 +3,15 @@ package com.tayler.appvalutay.ui
 import android.app.Application
 import android.util.Log
 import com.tayler.appvalutay.ui.base.BaseViewModel
+import com.tayler.appvalutay.usecases.AppCaseUse
 import com.tayler.appvalutay.usecases.DataStoreCaseUse
 import com.tayler.appvalutay.usecases.DataUseCase
 import com.tayler.appvalutay.usecases.UserCaseUse
 import com.tayler.appvalutay.utils.TAG_LOG
 
-class AppViewModel(private val dataUseCase: DataUseCase,
+class AppViewModel(
+    private val appCaseUse: AppCaseUse,
+    private val dataUseCase: DataUseCase,
                    private val userCaseUse: UserCaseUse,
                    private val dataStoreCaseUse: DataStoreCaseUse,
                    application: Application
@@ -25,6 +28,14 @@ class AppViewModel(private val dataUseCase: DataUseCase,
         execute {
             userCaseUse.saveUser()
             var response = userCaseUse.getUser()
+            Log.d(TAG_LOG,response.toString())
+        }
+    }
+
+    fun savePreference(){
+        execute {
+            appCaseUse.saveSession("qwerewq")
+            var response = appCaseUse.getSession()
             Log.d(TAG_LOG,response.toString())
         }
     }
