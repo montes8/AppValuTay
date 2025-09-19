@@ -7,6 +7,8 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import io.ktor.http.ContentType
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
 lateinit var myApplicationContext : Application
 
@@ -24,4 +26,8 @@ actual fun createDataStoreBasic(): DataStore<Preferences> {
             myApplicationContext.preferencesDataStoreFile(dataStoreFileName)
         }
     )
+}
+
+actual val platformModuleDataStore: Module = module {
+    single { createDataStoreBasic()}
 }

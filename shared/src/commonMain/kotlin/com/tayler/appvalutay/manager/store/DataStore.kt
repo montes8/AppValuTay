@@ -4,8 +4,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import okio.Path.Companion.toPath
-
-
+import org.koin.core.module.Module
 
 
 expect fun createDataStoreBasic(): DataStore<Preferences>
@@ -19,3 +18,6 @@ fun createDataStore(
 )
 
 internal const val dataStoreFileName = "storeAppTay"
+
+
+expect val platformModuleDataStore: Module

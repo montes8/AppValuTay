@@ -5,6 +5,8 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import kotlinx.cinterop.ExperimentalForeignApi
 import okio.Path.Companion.toPath
+import org.koin.core.module.Module
+import org.koin.dsl.module
 import platform.Foundation.NSDocumentDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSURL
@@ -42,4 +44,8 @@ actual fun createDataStoreBasic(): DataStore<Preferences> {
          }
 
     )
+}
+
+actual val platformModuleDataStore: Module = module {
+    single { createDataStoreBasic()}
 }
