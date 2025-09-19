@@ -1,24 +1,14 @@
 package com.tayler.appvalutay.manager.store
 
 import android.app.Application
-import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
-import io.ktor.http.ContentType
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
 lateinit var myApplicationContext : Application
-
-
-
-fun dataStore(context: Context): DataStore<Preferences> =
-    createDataStore(
-        producePath = { context.filesDir.resolve(dataStoreFileName).absolutePath }
-    )
-
 
 actual fun createDataStoreBasic(): DataStore<Preferences> {
     return PreferenceDataStoreFactory.create(
@@ -28,6 +18,6 @@ actual fun createDataStoreBasic(): DataStore<Preferences> {
     )
 }
 
-actual val platformModuleDataStore: Module = module {
+actual fun platformModuleDataStore(): Module = module {
     single { createDataStoreBasic()}
 }

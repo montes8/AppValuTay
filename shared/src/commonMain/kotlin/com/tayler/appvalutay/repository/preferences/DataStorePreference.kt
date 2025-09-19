@@ -9,23 +9,23 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 
-class DataStorePreference(private val dataStore :DataStore<Preferences>) : IDataStorePreferences{
+class DataStorePreference(private val dataStore: DataStore<Preferences>) : IDataStorePreferences {
 
     override suspend fun saveSession(value: String) {
-  try {
-      dataStore.edit { preferences ->
-          preferences[stringPreferencesKey("PREFERENCES_TOKENStore")] = value
-      }
-  }catch (e: Exception){
-      e.printStackTrace()
-  }
+        try {
+            dataStore.edit { preferences ->
+                preferences[stringPreferencesKey("PREFERENCES_TOKENStore")] = value
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
     }
 
     override suspend fun getSession(): String {
-       return dataStore.data.map { preferences ->
+        return dataStore.data.map { preferences ->
             val string = preferences[stringPreferencesKey("PREFERENCES_TOKENStore")] ?: ""
-           string
+            string
         }.first()
     }
 }

@@ -9,6 +9,6 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
     startKoin {
         appDeclaration()
         modules(
-            appModule,networkModule,dbModule(), platformModule(), platformModuleDataStore
+            appModule,networkModule,dbModule(), platformModule(), platformModuleDataStore()
         )
     }

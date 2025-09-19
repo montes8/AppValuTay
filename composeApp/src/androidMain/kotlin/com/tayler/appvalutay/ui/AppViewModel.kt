@@ -10,10 +10,10 @@ import com.tayler.appvalutay.utils.TAG_LOG
 
 class AppViewModel(private val dataUseCase: DataUseCase,
                    private val userCaseUse: UserCaseUse,
+                   private val dataStoreCaseUse: DataStoreCaseUse,
                    application: Application
 ) : BaseViewModel(application) {
 
-    private val dataStoreCaseUse = DataStoreCaseUse()
 
     fun getLocations(){
         execute {

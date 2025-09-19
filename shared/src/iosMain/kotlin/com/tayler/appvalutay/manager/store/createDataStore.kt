@@ -13,20 +13,6 @@ import platform.Foundation.NSURL
 import platform.Foundation.NSUserDomainMask
 
 @OptIn(ExperimentalForeignApi::class)
-fun dataStore(): DataStore<Preferences> = createDataStore(
-    producePath = {
-        val documentDirectory: NSURL? = NSFileManager.defaultManager.URLForDirectory(
-            directory = NSDocumentDirectory,
-            inDomain = NSUserDomainMask,
-            appropriateForURL = null,
-            create = false,
-            error = null,
-        )
-        requireNotNull(documentDirectory).path + "/$dataStoreFileName"
-    }
-)
-
-@OptIn(ExperimentalForeignApi::class)
 actual fun createDataStoreBasic(): DataStore<Preferences> {
     return PreferenceDataStoreFactory.createWithPath(
         corruptionHandler = null,
@@ -39,13 +25,13 @@ actual fun createDataStoreBasic(): DataStore<Preferences> {
                 create = false,
                 error = null,
             )
-            var a = requireNotNull(documentDirectory).path + "/$dataStoreFileName"
+            val a = requireNotNull(documentDirectory).path + "/$dataStoreFileName"
             a.toPath()
          }
 
     )
 }
 
-actual val platformModuleDataStore: Module = module {
+actual fun platformModuleDataStore(): Module = module {
     single { createDataStoreBasic()}
 }
